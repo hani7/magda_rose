@@ -1,0 +1,96 @@
+doctype html
+html(lang="en")
+    head
+        include inc/head.pug
+
+    body
+        include inc/loader.pug
+
+        // Header Area
+        .header-area#headerArea
+            .container.h-100.d-flex.align-items-center.justify-content-between.rtl-flex-d-row-r
+                // Back Button
+                .back-button.me-2
+                    a(href="profile.html")
+                        i.ti.ti-arrow-left
+
+                // Page Title
+                .page-heading
+                    h6.mb-0 Order Status
+
+                // Navbar Toggler
+                .suha-navbar-toggler.ms-2(data-bs-toggle="offcanvas", data-bs-target="#suhaOffcanvas", aria-controls="suhaOffcanvas")
+                    div
+                        span
+                        span
+                        span
+
+        include inc/sidenav.pug
+
+        .my-order-wrapper(style="background-image: url('img/bg-img/21.jpg')")
+            .container
+                .card
+                    .card-body.p-4
+                        // Single Order Status
+                        .single-order-status.active
+                            .order-icon
+                                i.ti.ti-basket
+                            .order-text
+                                h6 Order placed
+                                span 2 Feb 2025 - 12:38 PM
+                            .order-status
+                                i.ti.ti-circle-check
+                                
+                        // Single Order Status
+                        .single-order-status.active
+                            .order-icon
+                                i.ti.ti-box
+                            .order-text
+                                h6 Product packaging
+                                span 3 Feb 2025
+                            .order-status
+                                i.ti.ti-circle-check
+
+                        // Single Order Status
+                        .single-order-status.active
+                            .order-icon
+                                i.ti.ti-trolley
+                            .order-text
+                                h6 Ready for shipment
+                                span 3 Feb 2025
+                            .order-status
+                                i.ti.ti-circle-check
+
+                        // Single Order Status
+                        .single-order-status
+                            .order-icon
+                                i.ti.ti-truck-delivery
+                            .order-text
+                                h6 On the way
+                                span Estimate: 4 Feb 2025
+                            .order-status
+                                i.ti.ti-circle-check
+
+                        // Single Order Status
+                        .single-order-status
+                            .order-icon
+                                i.ti.ti-building-store
+                            .order-text
+                                h6 Dropped in the delivery station
+                                span Estimate: 6 Feb 2025
+                            .order-status
+                                i.ti.ti-circle-check
+
+                        // Single Order Status
+                        .single-order-status
+                            .order-icon
+                                i.ti.ti-heart-check
+                            .order-text
+                                h6 Delivered
+                                span Estimate: 7 Feb 2025
+                            .order-status
+                                i.ti.ti-circle-check
+
+        include inc/footer-nav.pug
+
+        include inc/footer.pug

@@ -1,0 +1,161 @@
+/* Welcome CSS */
+
+@use 'variables' as var;
+@use 'responsive';
+@use 'mixin';
+
+.intro-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    @include mixin.bg-gradient;
+    z-index: 1;
+}
+
+.get-started-btn {
+    position: fixed;
+    z-index: 100;
+    bottom: 2.5rem;
+    width: 280px;
+    left: 50%;
+    margin-left: -140px;
+}
+
+/* Hero CSS */
+
+.hero-slides {
+    position: relative;
+    z-index: 1;
+
+    .owl-prev,
+    .owl-next {
+        position: absolute;
+        top: 50%;
+        background-color: rgba(255, 255, 255, 0.11);
+        width: 1.875rem;
+        height: 1.875rem;
+        text-align: center;
+        line-height: 1.875rem;
+        left: 0;
+        margin-top: -0.938rem;
+        color: var.$white;
+        display: none;
+    }
+
+    .owl-next {
+        left: auto;
+        right: 0;
+    }
+
+    .owl-dots {
+        position: absolute;
+        width: 100%;
+        bottom: 0.938rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .owl-dot {
+            transition-duration: 500ms;
+            position: relative;
+            z-index: 1;
+            margin: 0 0.313rem;
+            width: 0.5rem;
+            height: 0.5rem;
+            flex: 0 0 0.5rem;
+            max-width: 0.5rem;
+            background-color: var.$border;
+            border-radius: 50%;
+
+            &.active {
+                background-color: var.$primary;
+
+                &::after {
+                    position: absolute;
+                    width: calc(100% + 0.5rem);
+                    height: calc(100% + 0.5rem);
+                    z-index: 1;
+                    content: "";
+                    border: 0.125rem solid var.$primary;
+                    left: -0.25rem;
+                    top: -0.25rem;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+}
+
+.single-hero-slide {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 160px;
+    background-position: center center;
+    background-size: cover;
+    border-radius: 0.5rem;
+
+    @media #{responsive.$breakpoint-xs-landscape} {
+        height: 170px;
+    }
+
+    @media #{responsive.$breakpoint-sm} {
+        height: 170px;
+    }
+
+    @media #{responsive.$breakpoint-md} {
+        height: 200px;
+    }
+
+    @media #{responsive.$breakpoint-lg} {
+        height: 210px;
+    }
+
+    @media #{responsive.$breakpoint-xl} {
+        height: 230px;
+    }
+
+    .slide-content {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 10;
+
+        .slide-text {
+            padding-left: 2rem;
+            padding-right: 1rem;
+        }
+
+        h4 {
+            font-weight: 600;
+            margin-bottom: 0.25rem !important;
+
+            @media #{responsive.$breakpoint-md} {
+                font-size: 2rem;
+            }
+
+            @media #{responsive.$breakpoint-lg} {
+                font-size: 2rem;
+            }
+
+            @media #{responsive.$breakpoint-xl} {
+                font-size: 2.5rem;
+            }
+        }
+
+        p {
+            @media #{responsive.$breakpoint-md} {
+                font-size: 1.125rem;
+            }
+
+            @media #{responsive.$breakpoint-lg} {
+                font-size: 1.125rem;
+            }
+
+            @media #{responsive.$breakpoint-xl} {
+                font-size: 1.25rem;
+            }
+        }
+    }
+}

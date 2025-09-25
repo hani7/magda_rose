@@ -1,0 +1,84 @@
+doctype html
+html(lang="en")
+    head
+        include inc/head.pug
+
+    body
+        include inc/loader.pug
+
+        // Login Wrapper Area
+        .login-wrapper.d-flex.align-items-center.justify-content-center.text-center
+            .container
+                .row.justify-content-center
+                    .col-10.col-lg-8
+                        .text-start.rtl-text-right
+                            h5.mb-1.text-white Phone Verification
+                            p.mb-4.text-white We will send you an OTP on this phone number.
+
+                        // OTP Send Form
+                        .otp-form.mt-5
+                            form(action="otp-confirm.html" method="")
+                                .mb-4.d-flex.rtl-flex-d-row-r
+                                    select#countryCodeSelect(name="countryCode", aria-label="Country Dial Code Select")
+                                        option(value="+1") +1
+                                        option(value="+7") +7
+                                        option(value="+20") +20
+                                        option(value="+27") +27
+                                        option(value="+30") +30
+                                        option(value="+31") +31
+                                        option(value="+32") +32
+                                        option(value="+33") +33
+                                        option(value="+34") +34
+                                        option(value="+36") +36
+                                        option(value="+39") +39
+                                        option(value="+40") +40
+                                        option(value="+44") +44
+                                        option(value="+49") +49
+                                        option(value="+52") +52
+                                        option(value="+55") +55
+                                        option(value="+60") +60
+                                        option(value="+61") +61
+                                        option(value="+62") +62
+                                        option(value="+63") +63
+                                        option(value="+64") +64
+                                        option(value="+65") +65
+                                        option(value="+66") +66
+                                        option(value="+81") +81
+                                        option(value="+82") +82
+                                        option(value="+84") +84
+                                        option(value="+86") +86
+                                        option(value="+91") +91
+                                        option(value="+92") +92
+                                        option(value="+94") +94
+                                        option(value="+95") +95
+                                        option(value="+98") +98
+                                        option(value="+212") +212
+                                        option(value="+213") +213
+                                        option(value="+216") +216
+                                        option(value="+218") +218
+                                        option(value="+234") +234
+                                        option(value="+255") +255
+                                        option(value="+256") +256
+                                        option(value="+260") +260
+                                        option(value="+263") +263
+                                        option(value="+358") +358
+                                        option(value="+371") +371
+                                        option(value="+381") +381
+                                        option(value="+971") +971
+                                        option(value="+972") +972
+                                        option(value="+974") +974
+                                        option(value="+975") +975
+                                        option(value="+977") +977
+
+                                    input.form-control.ps-0#phone_number(type="text" placeholder="Enter phone number")
+
+                                button.btn.btn-warning.btn-lg.w-100(type="submit") Send OTP
+
+                        // Term & Privacy Info
+                        .login-meta-data
+                            p.mt-3.mb-0 By providing my phone number, I hereby agree the
+                                a.mx-1(href="#") Term of Services
+                                | and
+                                a.mx-1(href="#") Privacy Policy.
+
+        include inc/footer-no-internet.pug

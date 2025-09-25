@@ -1,0 +1,151 @@
+/* Reboot CSS */
+
+@use 'variables' as var;
+@use 'responsive';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body,
+html {
+    font-family: var.$fonts;
+    color: var.$text;
+    overflow-x: hidden;
+    background-color: #f0f0f5;
+    scrollbar-width: thin;
+    padding-right: 0 !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var.$heading;
+    font-weight: 700;
+}
+
+p {
+    color: var.$text;
+    font-size: 0.875rem;
+}
+
+a,
+a:hover {
+    transition-duration: 500ms;
+    text-decoration: none;
+    outline: 0 solid transparent;
+    box-shadow: none;
+    color: var.$primary;
+    font-weight: 700;
+}
+
+ul {
+    margin: 0;
+
+    li {
+        list-style: none;
+        text-decoration: none;
+        font-size: 0.875rem;
+
+        &:hover {
+            list-style: none;
+            text-decoration: none;
+        }
+    }
+}
+
+ol {
+    margin: 0;
+
+    li {
+        font-size: 0.875rem;
+    }
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.section-padding-30 {
+    padding-top: 1.875rem;
+    padding-bottom: 1.875rem;
+}
+
+.section-padding-0-30 {
+    padding-top: 0;
+    padding-bottom: 1.875rem;
+}
+
+.section-padding-30-0 {
+    padding-top: 1.875rem;
+    padding-bottom: 0;
+}
+
+.section-padding-30-14 {
+    padding-top: 1.875rem;
+    padding-bottom: 0.875rem;
+}
+
+#scrollUp {
+    bottom: 1.875rem;
+    font-size: 1rem;
+    right: 1.875rem;
+    width: 1.875rem;
+    height: 1.875rem;
+    line-height: 1.875rem;
+    color: var.$white;
+    text-align: center;
+    box-shadow: 0 0.25rem 0.313rem 0 rgba(0, 0, 0, .04);
+    transition-duration: 500ms;
+    border-radius: 0.5rem;
+    background-color: var.$heading;
+
+    &:hover {
+        background-color: var.$primary;
+    }
+}
+
+input:required,
+textarea:required {
+    box-shadow: none !important;
+}
+
+input:invalid,
+textarea:invalid {
+    box-shadow: none !important;
+}
+
+.no-boxshadow {
+    box-shadow: none !important;
+}
+
+.container {
+    @media #{responsive.$breakpoint-xl} {
+        max-width: 650px;
+    }
+
+    @media #{responsive.$breakpoint-lg} {
+        max-width: 600px;
+    }
+
+    @media #{responsive.$breakpoint-md} {
+        max-width: 500px;
+    }
+
+    @media #{responsive.$breakpoint-xs} {
+        max-width: 380px;
+    }
+
+    @media #{responsive.$breakpoint-sm} {
+        max-width: 400px;
+    }
+}
+
+.nice-select {
+	border-radius: 0.5rem;
+}

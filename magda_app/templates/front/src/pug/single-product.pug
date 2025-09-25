@@ -1,0 +1,456 @@
+doctype html
+html(lang="en")
+    head
+        include inc/head.pug
+
+    body
+        include inc/loader.pug
+
+        // Header Area
+        .header-area#headerArea
+            .container.h-100.d-flex.align-items-center.justify-content-between.rtl-flex-d-row-r
+                // Back Button
+                .back-button.me-2
+                    a(href="shop-grid.html")
+                        i.ti.ti-arrow-left
+
+                // Page Title
+                .page-heading
+                    h6.mb-0 Product Details
+
+                // Navbar Toggler
+                .suha-navbar-toggler.ms-2(data-bs-toggle="offcanvas", data-bs-target="#suhaOffcanvas", aria-controls="suhaOffcanvas")
+                    div
+                        span
+                        span
+                        span
+
+        include inc/sidenav.pug
+
+        .page-content-wrapper
+            .product-slide-wrapper
+                // Product Slides
+                .product-slides.owl-carousel
+                    // Single Hero Slide
+                    .single-product-slide(style="background-image: url('img/bg-img/6.jpg')")
+
+                    // Single Hero Slide
+                    .single-product-slide(style="background-image: url('img/bg-img/10.jpg')")
+
+                    // Single Hero Slide
+                    .single-product-slide(style="background-image: url('img/bg-img/11.jpg')")
+                
+                // Video Button
+                a.video-btn.shadow-sm#singleProductVideoBtn(href="https://www.youtube.com/watch?v=lFGvqvPh5jI")
+                    i.ti.ti-player-play
+
+            .product-description.pb-3
+
+                // Product Title & Meta Data
+                .product-title-meta-data.bg-white.mb-3.py-3
+                    .container.d-flex.justify-content-between.rtl-flex-d-row-r
+                        .p-title-price
+                            h5.mb-1 Flower Ceramic Pots
+                            p.sale-price.mb-0.lh-1 $38
+                                span $41
+                        .p-wishlist-share
+                            a(href="wishlist-grid.html")
+                                i.ti.ti-heart
+                    // Ratings
+                    .product-ratings
+                        .container.d-flex.align-items-center.justify-content-between.rtl-flex-d-row-r
+                            .ratings
+                                i.ti.ti-star-filled
+                                i.ti.ti-star-filled
+                                i.ti.ti-star-filled
+                                i.ti.ti-star-filled
+                                i.ti.ti-star-filled
+                                span.ps-1 3 ratings
+
+                            .total-result-of-ratings
+                                span 5.0
+                                span Very Good                                
+
+                // Flash Sale Panel
+                .flash-sale-panel.bg-white.mb-3.py-3
+                    .container
+                        // Sales Offer Content
+                        .sales-offer-content.d-flex.align-items-end.justify-content-between
+                            // Sales End
+                            .sales-end
+                                p.mb-1.font-weight-bold
+                                    i.ti.ti-bolt-lightning.lni-flashing-effect.text-danger
+                                    |  Flash sale end in
+
+                                // Please use event time this format: YYYY/MM/DD hh:mm:ss
+                                ul.sales-end-timer.ps-0.d-flex.align-items-center(data-countdown="2026/01/01 14:21:37")
+                                    li
+                                        span.days 0
+                                        | d
+                                    li
+                                        span.hours 0
+                                        | h
+                                    li
+                                        span.minutes 0
+                                        | m
+                                    li
+                                        span.seconds 0
+                                        | s
+
+                            // Sales Volume
+                            .sales-volume.text-end
+                                p.mb-1.font-weight-bold 82% Sold Out
+                                .progress(style="height: 0.375rem;")
+                                    .progress-bar.bg-warning(role="progressbar", style="width: 82%;", aria-valuenow="82", aria-valuemin="0", aria-valuemax="100")
+
+                // Selection Panel
+                .selection-panel.bg-white.mb-3.py-3
+                    .container.d-flex.align-items-center.justify-content-between
+                        // Choose Color
+                        .choose-color-wrapper
+                            p.mb-1.font-weight-bold Color
+                            .choose-color-radio.d-flex.align-items-center
+                                // Single Radio Input
+                                .form-check.mb-0
+                                    input.form-check-input.blue#colorRadio1(type="radio", name="colorRadio", checked)
+                                    label.form-check-label(for="colorRadio1")
+
+                                // Single Radio Input
+                                .form-check.mb-0
+                                    input.form-check-input.yellow#colorRadio2(type="radio", name="colorRadio")
+                                    label.form-check-label(for="colorRadio2")
+
+                                // Single Radio Input
+                                .form-check.mb-0
+                                    input.form-check-input.green#colorRadio3(type="radio", name="colorRadio")
+                                    label.form-check-label(for="colorRadio3")
+
+                                // Single Radio Input
+                                .form-check.mb-0
+                                    input.form-check-input.purple#colorRadio4(type="radio", name="colorRadio")
+                                    label.form-check-label(for="colorRadio4")
+
+                        // Choose Size
+                        .choose-size-wrapper.text-end
+                            p.mb-1.font-weight-bold Size
+                            .choose-size-radio.d-flex.align-items-center
+                                // Single Radio Input
+                                .form-check.mb-0.me-2
+                                    input.form-check-input#sizeRadio1(type="radio", name="sizeRadio")
+                                    label.form-check-label(for="sizeRadio1") S
+
+                                // Single Radio Input
+                                .form-check.mb-0.me-2
+                                    input.form-check-input#sizeRadio2(type="radio", name="sizeRadio", checked)
+                                    label.form-check-label(for="sizeRadio2") M
+
+                                // Single Radio Input
+                                .form-check.mb-0.me-2
+                                    input.form-check-input#sizeRadio3(type="radio", name="sizeRadio")
+                                    label.form-check-label(for="sizeRadio3") L
+
+                // Add To Cart
+                .cart-form-wrapper.bg-white.mb-3.py-3
+                    .container
+                        form.cart-form(action="#" method="")
+                            .order-plus-minus.d-flex.align-items-center
+                                .quantity-button-handler -
+                                input.form-control.cart-quantity-input(type="text", step="1", name="quantity", value="3")
+                                .quantity-button-handler +
+                            button.btn.btn-primary.ms-3(type="submit") Add To Cart
+
+                // Product Specification
+                .p-specification.bg-white.mb-3.py-3
+                    .container
+                        h6 Specifications
+                        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, eum? Id, culpa? At officia quisquam laudantium nisi mollitia nesciunt, qui porro asperiores cum voluptates placeat similique recusandae in facere quos vitae?
+
+                        ul.mb-3.ps-3
+                            li
+                                i.ti.ti-check.me-1
+                                |  100% Good Reviews
+                            li
+                                i.ti.ti-check.me-1
+                                |  7 Days Returns
+                            li 
+                                i.ti.ti-check.me-1
+                                |  Warranty not Aplicable
+                            li 
+                                i.ti.ti-check.me-1
+                                |  100% Brand New Product
+
+                        p.mb-0 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, eum? Id, culpa? At officia quisquam laudantium nisi mollitia nesciunt, qui porro asperiores cum voluptates placeat similique recusandae in facere quos vitae?
+
+                // Product Video 
+                include inc/video-cta.pug
+
+                // Related Products Slides
+                .related-product-wrapper.bg-white.py-3.mb-3
+                    .container
+                        .section-heading.d-flex.align-items-center.justify-content-between.rtl-flex-d-row-r
+                            h6 Related Products
+                            a.btn.btn-sm.btn-secondary(href="shop-grid.html") View all
+
+                        .related-product-slide.owl-carousel
+                            .card.product-card.bg-gray.shadow-none
+                                .card-body
+                                    // Badge
+                                    span.badge.rounded-pill.badge-warning Sale
+                                    // Wishlist Button
+                                    a.wishlist-btn(href="#")
+                                        i.ti.ti-heart                        
+                                    // Thumbnail 
+                                    a.product-thumbnail.d-block(href="single-product.html")
+                                        img.mb-2(src="img/product/11.png", alt="")
+                                        // Offer Countdown Timer: Please use event time this format: YYYY/MM/DD hh:mm:ss 
+                                        ul.offer-countdown-timer.d-flex.align-items-center.shadow-sm(data-countdown="2025/12/31 23:59:59")
+                                            li
+                                                span.days 0
+                                                | d
+                                            li
+                                                span.hours 0
+                                                | h
+                                            li
+                                                span.minutes 0
+                                                | m
+                                            li
+                                                span.seconds 0
+                                                | s
+                                    // Product Title 
+                                    a.product-title(href="single-product.html") Beach Cap
+                                    // Product Price 
+                                    p.sale-price $13
+                                        span $42
+                                    // Rating 
+                                    .product-rating
+                                        i.ti.ti-star-filled
+                                        i.ti.ti-star-filled
+                                        i.ti.ti-star-filled
+                                        i.ti.ti-star-filled
+                                        i.ti.ti-star-filled
+                                    // Add to Cart 
+                                    a.btn.btn-primary.btn-sm(href="#")
+                                        i.ti.ti-plus
+
+                            .card.product-card.bg-gray.shadow-none
+                                .card-body
+                                    // Badge
+                                    span.badge.rounded-pill.badge-success New
+                                    // Wishlist Button
+                                    a.wishlist-btn(href="#")
+                                        i.ti.ti-heart                        
+                                    // Thumbnail 
+                                    a.product-thumbnail.d-block(href="single-product.html")
+                                        img.mb-2(src="img/product/5.png", alt="")
+                                    // Product Title 
+                                    a.product-title(href="single-product.html") Wooden Sofa
+                                    // Product Price 
+                                    p.sale-price $74
+                                        span $99
+                                    // Rating 
+                                    .product-rating
+                                        i.ti.ti-star-filled
+                                        i.ti.ti-star-filled
+                                        i.ti.ti-star-filled
+                                        i.ti.ti-star-filled
+                                        i.ti.ti-star-filled
+                                    // Add to Cart 
+                                    a.btn.btn-primary.btn-sm(href="#")
+                                        i.ti.ti-plus
+
+                            .card.product-card.bg-gray.shadow-none
+                                .card-body
+                                    // Badge
+                                    span.badge.rounded-pill.badge-success Sale
+                                    // Wishlist Button
+                                    a.wishlist-btn(href="#")
+                                        i.ti.ti-heart                        
+                                    // Thumbnail 
+                                    a.product-thumbnail.d-block(href="single-product.html")
+                                        img.mb-2(src="img/product/6.png", alt="")
+                                    // Product Title 
+                                    a.product-title(href="single-product.html") Roof Lamp
+                                    // Product Price 
+                                    p.sale-price $99
+                                        span $113
+                                    // Rating 
+                                    .product-rating
+                                        i.ti.ti-star-filled
+                                        i.ti.ti-star-filled
+                                        i.ti.ti-star-filled
+                                        i.ti.ti-star-filled
+                                        i.ti.ti-star-filled
+                                    // Add to Cart 
+                                    a.btn.btn-primary.btn-sm(href="#")
+                                        i.ti.ti-plus
+
+                            .card.product-card.bg-gray.shadow-none
+                                .card-body
+                                    // Badge
+                                    span.badge.rounded-pill.badge-danger -18%
+                                    // Wishlist Button
+                                    a.wishlist-btn(href="#")
+                                        i.ti.ti-heart                        
+                                    // Thumbnail 
+                                    a.product-thumbnail.d-block(href="single-product.html")
+                                        img.mb-2(src="img/product/9.png", alt="")
+                                        // Offer Countdown Timer: Please use event time this format: YYYY/MM/DD hh:mm:ss 
+                                        ul.offer-countdown-timer.d-flex.align-items-center.shadow-sm(data-countdown="2025/12/23 00:21:29")
+                                            li
+                                                span.days 0
+                                                | d
+                                            li
+                                                span.hours 0
+                                                | h
+                                            li
+                                                span.minutes 0
+                                                | m
+                                            li
+                                                span.seconds 0
+                                                | s
+                                    // Product Title 
+                                    a.product-title(href="single-product.html") Sneaker Shoes
+                                    // Product Price 
+                                    p.sale-price $87
+                                        span $92
+                                    // Rating 
+                                    .product-rating
+                                        i.ti.ti-star-filled
+                                        i.ti.ti-star-filled
+                                        i.ti.ti-star-filled
+                                        i.ti.ti-star-filled
+                                        i.ti.ti-star-filled
+                                    // Add to Cart 
+                                    a.btn.btn-primary.btn-sm(href="#")
+                                        i.ti.ti-plus
+
+                            .card.product-card.bg-gray.shadow-none
+                                .card-body
+                                    // Badge
+                                    span.badge.rounded-pill.badge-danger -11%
+                                    // Wishlist Button
+                                    a.wishlist-btn(href="#")
+                                        i.ti.ti-heart
+                                    // Thumbnail 
+                                    a.product-thumbnail.d-block(href="single-product.html")
+                                        img.mb-2(src="img/product/8.png", alt="")
+                                    // Product Title 
+                                    a.product-title(href="single-product.html") Wooden Chair
+                                    // Product Price 
+                                    p.sale-price $21
+                                        span $25
+                                    // Rating 
+                                    .product-rating
+                                        i.ti.ti-star-filled
+                                        i.ti.ti-star-filled
+                                        i.ti.ti-star-filled
+                                        i.ti.ti-star-filled
+                                        i.ti.ti-star-filled
+                                    // Add to Cart 
+                                    a.btn.btn-primary.btn-sm(href="#")
+                                        i.ti.ti-plus
+
+                            .card.product-card.bg-gray.shadow-none
+                                .card-body
+                                    // Badge
+                                    span.badge.rounded-pill.badge-warning On Sale
+                                    // Wishlist Button
+                                    a.wishlist-btn(href="#")
+                                        i.ti.ti-heart
+                                    // Thumbnail 
+                                    a.product-thumbnail.d-block(href="single-product.html")
+                                        img.mb-2(src="img/product/4.png", alt="")
+                                    // Product Title 
+                                    a.product-title(href="single-product.html") Polo Shirts
+                                    // Product Price 
+                                    p.sale-price $38
+                                        span $41
+                                    // Rating 
+                                    .product-rating
+                                        i.ti.ti-star-filled
+                                        i.ti.ti-star-filled
+                                        i.ti.ti-star-filled
+                                        i.ti.ti-star-filled
+                                        i.ti.ti-star-filled
+                                    // Add to Cart 
+                                    a.btn.btn-primary.btn-sm(href="#")
+                                        i.ti.ti-plus
+
+                // Rating & Review Wrapper 
+                .rating-and-review-wrapper.bg-white.py-3.mb-3.dir-rtl
+                    .container
+                        h6 Ratings &amp; Reviews
+
+                        .rating-review-content
+                            ul.ps-0
+                                // Single User Review 
+                                li.single-user-review.d-flex
+                                    .user-thumbnail
+                                        img(src="img/bg-img/7.jpg", alt="")
+                                    .rating-comment
+                                        .rating
+                                            i.ti.ti-star-filled
+                                            i.ti.ti-star-filled
+                                            i.ti.ti-star-filled
+                                            i.ti.ti-star-filled
+                                            i.ti.ti-star-filled
+                                        p.comment.mb-0 Very good product. It's just amazing!
+                                        span.name-date Designing World - 12 Dec 2025
+                                        a.review-image.mt-2.border.rounded(href="img/product/3.png")
+                                            img.rounded-3(src="img/product/3.png", alt="")
+
+                                // Single User Review 
+                                li.single-user-review.d-flex
+                                    .user-thumbnail
+                                        img(src="img/bg-img/8.jpg", alt="")
+                                    .rating-comment
+                                        .rating
+                                            i.ti.ti-star-filled
+                                            i.ti.ti-star-filled
+                                            i.ti.ti-star-filled
+                                            i.ti.ti-star-filled
+                                            i.ti.ti-star-filled
+                                        p.comment.mb-0 Very excellent product. Love it.
+                                        span.name-date Designing World - 8 Dec 2025
+                                        a.review-image.mt-2.border.rounded(href="img/product/4.png")
+                                            img.rounded-3(src="img/product/4.png", alt="")
+                                        a.review-image.mt-2.border.rounded(href="img/product/6.png")
+                                            img.rounded-3(src="img/product/6.png", alt="")
+
+                                // Single User Review 
+                                li.single-user-review.d-flex
+                                    .user-thumbnail
+                                        img(src="img/bg-img/9.jpg", alt="")
+                                    .rating-comment
+                                        .rating
+                                            i.ti.ti-star-filled
+                                            i.ti.ti-star-filled
+                                            i.ti.ti-star-filled
+                                            i.ti.ti-star-filled
+                                            i.ti.ti-star-filled
+                                        p.comment.mb-0 What a nice product it is. I am looking it's.
+                                        span.name-date Designing World - 28 Nov 2025
+
+                // Ratings Submit Form
+                .ratings-submit-form.bg-white.py-3.dir-rtl
+                    .container
+                        h6 Submit A Review
+                        form(action="#" method="")
+                            .stars.mb-3
+                                input(type="radio" name="star" class="star-1" id="star1")
+                                label.star-1(for="star1")
+                                input(type="radio" name="star" class="star-2" id="star2")
+                                label.star-2(for="star2")
+                                input(type="radio" name="star" class="star-3" id="star3")
+                                label.star-3(for="star3")
+                                input(type="radio" name="star" class="star-4" id="star4")
+                                label.star-4(for="star4")
+                                input(type="radio" name="star" class="star-5" id="star5")
+                                label.star-5(for="star5")
+                                span
+                            textarea.form-control.mb-3#comments(name="comment", cols="30", rows="10", data-max-length="200", placeholder="Write your review...")
+                            button.btn.btn-primary(type="submit") Save Review
+
+        include inc/footer-nav.pug
+
+        include inc/footer.pug

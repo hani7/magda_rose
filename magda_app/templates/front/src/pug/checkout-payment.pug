@@ -1,0 +1,67 @@
+doctype html
+html(lang="en")
+    head
+        include inc/head.pug
+
+    body
+        include inc/loader.pug
+
+        // Header Area
+        .header-area#headerArea
+            .container.h-100.d-flex.align-items-center.justify-content-between.rtl-flex-d-row-r
+                // Back Button
+                .back-button.me-2
+                    a(href="checkout.html")
+                        i.ti.ti-arrow-left
+
+                // Page Title
+                .page-heading
+                    h6.mb-0 Choose Payment Method
+
+                // Navbar Toggler
+                .suha-navbar-toggler.ms-2(data-bs-toggle="offcanvas", data-bs-target="#suhaOffcanvas", aria-controls="suhaOffcanvas")
+                    div
+                        span
+                        span
+                        span
+
+        include inc/sidenav.pug
+
+        .page-content-wrapper
+            .container
+                // Checkout Wrapper
+                .checkout-wrapper-area.py-3
+                    // Choose Payment Method
+                    .choose-payment-method
+                        .row.g-2.justify-content-center.rtl-flex-d-row-r
+                            // Single Payment Method
+                            .col-6.col-md-5
+                                .single-payment-method
+                                    a.credit-card.active(href="checkout-credit-card.html")
+                                        i.ti.ti-brand-mastercard
+                                        h6 Credit Card
+
+                            // Single Payment Method
+                            .col-6.col-md-5
+                                .single-payment-method
+                                    a.bank(href="checkout-bank.html")
+                                        i.ti.ti-building
+                                        h6 Bank Transfer
+
+                            // Single Payment Method
+                            .col-6.col-md-5
+                                .single-payment-method
+                                    a.paypal(href="checkout-paypal.html")
+                                        i.ti.ti-brand-paypal
+                                        h6 PayPal
+
+                            // Single Payment Method
+                            .col-6.col-md-5
+                                .single-payment-method
+                                    a.cash(href="checkout-cash.html")
+                                        i.ti.ti-shield-dollar
+                                        h6 Cash On Delivary
+
+        include inc/footer-nav.pug
+
+        include inc/footer.pug

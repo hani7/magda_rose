@@ -1,0 +1,93 @@
+/* Notification CSS */
+
+@use 'variables' as var;
+@use 'responsive';
+@use 'mixin';
+
+.notification-area {
+    position: relative;
+    z-index: 1;
+
+    .list-group-item {
+        border-color: var.$border;
+        margin-bottom: 0.5rem;
+        border-radius: 0.5rem;
+
+        .noti-icon {
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            width: 1.875rem;
+            height: 1.875rem;
+            flex: 0 0 1.875rem;
+            max-width: 1.875rem;
+            @include mixin.bg-gradient;
+            color: var.$white;
+            text-align: center;
+            font-size: 1rem;
+            margin-right: .75rem;
+            border-radius: 50%;
+
+            i {
+                line-height: 1.875rem;
+            }
+
+            &::before {
+                position: absolute;
+                width: 0.625rem;
+                height: 0.625rem;
+                background-color: var.$warning;
+                content: "";
+                top: -0.125rem;
+                right: -0.125rem;
+                border-radius: 50%;
+                z-index: 1;
+            }
+        }
+
+        p {
+            margin-bottom: 0.5rem;
+        }
+
+        span {
+            font-size: 0.75rem;
+            display: block;
+            color: var.$text;
+        }
+
+        &:first-child {
+            border-top-left-radius: .5rem;
+            border-top-right-radius: .5rem;
+        }
+
+        &:last-child {
+            border-bottom-right-radius: .5rem;
+            border-bottom-left-radius: .5rem;
+        }
+
+        &.readed {
+            background-color: var.$light;
+
+            .noti-icon {
+                background: var.$success;
+
+                &::before {
+                    display: none;
+                }
+            }
+
+            h6 {
+                color: var.$text;
+            }
+        }
+    }
+
+    .unread-notifications {
+        position: relative;
+        z-index: 1;
+    }
+}
+
+.notification-clear-all {
+    font-size: 0.875rem;
+}

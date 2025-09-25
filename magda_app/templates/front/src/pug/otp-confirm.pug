@@ -1,0 +1,35 @@
+doctype html
+html(lang="en")
+    head
+        include inc/head.pug
+
+    body
+        include inc/loader.pug
+
+        // Login Wrapper Area
+        .login-wrapper.d-flex.align-items-center.justify-content-center.text-center
+            .container
+                .row.justify-content-center
+                    .col-10.col-lg-8
+                        .text-start.rtl-text-right
+                            h5.mb-1.text-white Verify Phone Number
+                            p.mb-4.text-white Enter the OTP code sent to
+                                span.mx-1 0123 456 7890
+
+                        // OTP Verify Form
+                        .otp-verify-form.mt-5
+                            form(action="home.html" method="")
+                                .d-flex.justify-content-between.mb-5.rtl-flex-d-row-r
+                                    input.single-otp-input.form-control(type="text", value="", placeholder="-", maxlength="1")
+                                    input.single-otp-input.form-control(type="text", value="", placeholder="-", maxlength="1")
+                                    input.single-otp-input.form-control(type="text", value="", placeholder="-", maxlength="1")
+                                    input.single-otp-input.form-control(type="text", value="", placeholder="-", maxlength="1")
+
+                                button.btn.btn-warning.btn-lg.w-100(type="submit") Verify &amp; Proceed
+
+                        // Term & Privacy Info
+                        .login-meta-data
+                            p.mt-3.mb-0 Don't received the OTP?
+                                span#resendOTP.otp-sec.mx-1.text-white
+
+        include inc/footer-otp.pug

@@ -1,0 +1,66 @@
+doctype html
+html(lang="en")
+    head
+        include inc/head.pug
+
+    body
+        include inc/loader.pug
+
+        // Header Area
+        .header-area#headerArea
+            .container.h-100.d-flex.align-items-center.justify-content-between.rtl-flex-d-row-r
+                // Back Button
+                .back-button.me-2
+                    a(href="checkout-payment.html")
+                        i.ti.ti-arrow-left
+
+                // Page Title
+                .page-heading
+                    h6.mb-0 Credit Card Info
+
+                // Navbar Toggler
+                .suha-navbar-toggler.ms-2(data-bs-toggle="offcanvas", data-bs-target="#suhaOffcanvas", aria-controls="suhaOffcanvas")
+                    div
+                        span
+                        span
+                        span
+
+        include inc/sidenav.pug
+
+        .page-content-wrapper
+            .container
+                // Checkout Wrapper
+                .checkout-wrapper-area.py-3
+                    // Credit Card Info
+                    .credit-card-info-wrapper
+                        img.d-block.mb-4(src="img/bg-img/credit-card.png", alt="")
+
+                        .pay-credit-card-form
+                            form(action="payment-success.html" method="")
+                                .mb-3
+                                    label(for="cardNumber") Credit Card Number
+                                    input.form-control(type="text" id="cardNumber" placeholder="1234 ×××× ×××× ××××" value="")
+                                    small.ms-1
+                                        i.ti.ti-lock-square-rounded.me-1
+                                        | Your payment info is stored securely.
+                                        a.mx-1(href="#") Learn More
+
+                                .mb-3
+                                    label(for="cardholder") Cardholder Name
+                                    input.form-control(type="text" id="cardholder" placeholder="SUHA JANNAT" value="")
+
+                                .row
+                                    .col-6
+                                        .mb-3
+                                            label(for="expiration") Exp. Date
+                                            input.form-control(type="text" id="expiration" placeholder="12/20" value="")
+                                    .col-6
+                                        .mb-3
+                                            label(for="cvvcode") CVV Code
+                                            input.form-control(type="text" id="cvvcode" placeholder="××××" value="")
+
+                                button.btn.btn-primary.btn-lg.w-100(type="submit") Pay Now
+
+        include inc/footer-nav.pug
+
+        include inc/footer.pug

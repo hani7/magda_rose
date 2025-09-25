@@ -1,0 +1,74 @@
+doctype html
+html(lang="en")
+    head
+        include inc/head.pug
+
+    body
+        include inc/loader.pug
+
+        include inc/header.pug
+
+        include inc/sidenav.pug
+
+        .page-content-wrapper
+            .container
+                // Profile Wrapper
+                .profile-wrapper-area.py-3
+                    // User Information
+                    .card.user-info-card
+                        .card-body.p-4.d-flex.align-items-center
+                            .user-profile.me-3
+                                img(src="img/bg-img/9.jpg", alt="")
+                            .user-info
+                                p.mb-0.text-white @designing-world
+                                h5.mb-0.text-white Suha Jannat
+
+                    // User Meta Data
+                    .card.user-data-card
+                        .card-body
+                            .single-profile-data.d-flex.align-items-center.justify-content-between
+                                .title.d-flex.align-items-center
+                                    i.ti.ti-at
+                                    span Username
+                                .data-content @designing-world
+
+                            .single-profile-data.d-flex.align-items-center.justify-content-between
+                                .title.d-flex.align-items-center
+                                    i.ti.ti-user
+                                    span Full Name
+                                .data-content SUHA JANNAT
+
+                            .single-profile-data.d-flex.align-items-center.justify-content-between
+                                .title.d-flex.align-items-center
+                                    i.ti.ti-phone
+                                    span Phone
+                                .data-content +880 000 111 222
+
+                            .single-profile-data.d-flex.align-items-center.justify-content-between
+                                .title.d-flex.align-items-center
+                                    i.ti.ti-mail
+                                    span Email
+                                .data-content care@example.com                                
+
+                            .single-profile-data.d-flex.align-items-center.justify-content-between
+                                .title.d-flex.align-items-center
+                                    i.ti.ti-location-pin
+                                    span Shipping:
+                                .data-content 28/C Green Road, BD
+
+                            .single-profile-data.d-flex.align-items-center.justify-content-between
+                                .title.d-flex.align-items-center
+                                    i.ti.ti-star-filled
+                                    span My Orders
+                                .data-content
+                                    a.btn.btn-primary.btn-sm(href="my-order.html") View Status
+
+                            // Edit Profile
+                            .edit-profile-btn.mt-3
+                                a.btn.btn-primary.btn-lg.w-100(href="edit-profile.html")
+                                    i.ti.ti-pencil.me-2
+                                    | Edit Profile
+
+        include inc/footer-nav.pug
+
+        include inc/footer.pug

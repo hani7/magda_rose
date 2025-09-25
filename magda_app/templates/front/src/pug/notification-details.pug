@@ -1,0 +1,46 @@
+doctype html
+html(lang="en")
+    head
+        include inc/head.pug
+
+    body
+        include inc/loader.pug
+
+        // Header Area
+        .header-area#headerArea
+            .container.h-100.d-flex.align-items-center.justify-content-between.rtl-flex-d-row-r
+                // Back Button
+                .back-button.me-2
+                    a(href="notifications.html")
+                        i.ti.ti-arrow-left
+
+                // Page Title
+                .page-heading
+                    h6.mb-0 Notifications Details
+
+                // Navbar Toggler
+                .suha-navbar-toggler.ms-2(data-bs-toggle="offcanvas", data-bs-target="#suhaOffcanvas", aria-controls="suhaOffcanvas")
+                    div
+                        span
+                        span
+                        span
+
+        include inc/sidenav.pug
+
+        // Page Content Wrapper
+        .page-content-wrapper
+            .container
+                // Notifications Details Area
+                .notification-area.pt-3.pb-2
+                    // Notification Details
+                    .list-group-item.d-flex.py-3.bg-transparent
+                        span.noti-icon
+                            i.ti.ti-check
+                        .noti-info
+                            h6 Suha just uploaded a new product!
+                            p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae dolore maiores corrupti?
+                            a.btn.btn-light(href="#") Product Link
+
+        include inc/footer-nav.pug
+
+        include inc/footer.pug

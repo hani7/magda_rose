@@ -1,0 +1,65 @@
+doctype html
+html(lang="en")
+    head
+        include inc/head.pug
+
+    body
+        include inc/loader.pug
+
+        // Header Area
+        .header-area#headerArea
+            .container.h-100.d-flex.align-items-center.justify-content-between.rtl-flex-d-row-r
+                // Back Button
+                .back-button.me-2
+                    a(href="shop-grid.html")
+                        i.ti.ti-arrow-left
+
+                // Page Title
+                .page-heading
+                    h6.mb-0 Vendors
+
+                // Navbar Toggler
+                .suha-navbar-toggler.ms-2(data-bs-toggle="offcanvas", data-bs-target="#suhaOffcanvas", aria-controls="suhaOffcanvas")
+                    div
+                        span
+                        span
+                        span
+
+        include inc/sidenav.pug
+
+        .page-content-wrapper.py-3
+            .container
+                .row.gy-3
+                    mixin singleVendor(bgImage, vendorTitle, profileImg, vendorLink, location, sellerStatus)
+                        .col-12
+                            // Single Vendor 
+                            .single-vendor-wrap.bg-img.p-4.bg-overlay(style=`background-image: url('${bgImage}')`)
+                                h6.vendor-title.text-white #{vendorTitle}
+                                .vendor-info
+                                    p.mb-1.text-white
+                                        i.ti.ti-map-pin.me-1
+                                        | #{location}
+                                    .ratings.lh-1
+                                        i.ti.ti-star-filled
+                                        i.ti.ti-star-filled
+                                        i.ti.ti-star-filled
+                                        i.ti.ti-star-filled
+                                        i.ti.ti-star-filled
+                                        span.text-white (#{sellerStatus})
+                                a.btn.btn-warning.btn-sm.mt-3(href=vendorLink) Go to store
+                                    i.ti.ti-arrow-right.ms-1
+
+                                // Vendor Profile
+                                .vendor-profile.shadow
+                                    figure.m-0
+                                        img(src=profileImg, alt="")
+
+                    +singleVendor("img/bg-img/12.jpg", "Designing World", "img/product/dw.png", "vendor-shop.html", "Dhaka", "88% Positive Seller")
+                    +singleVendor("img/bg-img/16.jpg", "Stylie Wear", "img/product/stylie.png", "vendor-shop.html", "Chittagong", "96% Positive Seller")
+                    +singleVendor("img/bg-img/14.jpg", "Suha", "img/core-img/logo-small.png", "vendor-shop.html", "Rangpur", "99% Positive Seller")
+                    +singleVendor("img/bg-img/15.jpg", "Affan", "img/product/affan.png", "vendor-shop.html", "Dhaka", "93% Positive Seller")
+                    +singleVendor("img/bg-img/17.jpg", "News Ten", "img/product/newsten.png", "vendor-shop.html", "Rajshahi", "96% Positive Seller")
+
+        include inc/footer-nav.pug
+
+        include inc/footer.pug

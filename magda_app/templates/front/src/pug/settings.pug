@@ -1,0 +1,131 @@
+doctype html
+html(lang="en")
+    head
+        include inc/head.pug
+
+    body
+        include inc/loader.pug
+
+        include inc/header.pug
+
+        include inc/sidenav.pug
+
+        .page-content-wrapper
+            .container
+                .settings-wrapper.py-3
+
+                    // Single Setting Card
+                    .card.settings-card
+                        .card-body
+                            // Single Settings
+                            .single-settings.d-flex.align-items-center.justify-content-between
+                                .title
+                                    i.ti.ti-moon
+                                    span Night Mode
+                                .data-content
+                                    .toggle-button-cover
+                                        .button.r
+                                            input.checkbox#darkSwitch(type="checkbox")
+                                            .knobs
+                                            .layer
+
+                    // Single Setting Card
+                    .card.settings-card
+                        .card-body
+                            // Single Settings
+                            .single-settings.d-flex.align-items-center.justify-content-between
+                                .title
+                                    i.ti.ti-pilcrow
+                                    span RTL Mode
+                                .data-content
+                                    .toggle-button-cover
+                                        .button.r
+                                            input.checkbox#rtlSwitch(type="checkbox")
+                                            .knobs
+                                            .layer
+
+                    // Single Setting Card
+                    .card.settings-card
+                        .card-body
+                            // Single Settings
+                            .single-settings.d-flex.align-items-center.justify-content-between
+                                .title
+                                    i.ti.ti-circle-check
+                                    span Availability
+                                .data-content
+                                    .toggle-button-cover
+                                        .button.r
+                                            input.checkbox(type="checkbox" checked)
+                                            .knobs
+                                            .layer
+
+                    // Single Setting Card
+                    .card.settings-card
+                        .card-body
+                            // Single Settings
+                            .single-settings.d-flex.align-items-center.justify-content-between
+                                .title
+                                    i.ti.ti-bell-ringing
+                                    span Notifications
+                                .data-content
+                                    .toggle-button-cover
+                                        .button.r
+                                            input.checkbox(type="checkbox" checked)
+                                            .knobs
+                                            .layer
+
+                    // Single Setting Card
+                    .card.settings-card
+                        .card-body
+                            // Single Settings
+                            .single-settings.d-flex.align-items-center.justify-content-between
+                                .title
+                                    i.ti.ti-language
+                                    span Language
+                                .data-content
+                                    a(href="language.html")
+                                        | English
+                                        i.ti.ti-arrow-right
+
+                    // Single Setting Card
+                    .card.settings-card
+                        .card-body
+                            // Single Settings
+                            .single-settings.d-flex.align-items-center.justify-content-between
+                                .title
+                                    i.ti.ti-question-mark
+                                    span Support
+                                .data-content
+                                    a(href="support.html")
+                                        | Get Help
+                                        i.ti.ti-arrow-right
+
+                    // Single Setting Card
+                    .card.settings-card
+                        .card-body
+                            // Single Settings
+                            .single-settings.d-flex.align-items-center.justify-content-between
+                                .title
+                                    i.ti.ti-shield-lock
+                                    span Privacy Policy
+                                .data-content
+                                    a(href="privacy-policy.html")
+                                        | View
+                                        i.ti.ti-arrow-right
+
+                    // Single Setting Card
+                    .card.settings-card
+                        .card-body
+                            // Single Settings
+                            .single-settings.d-flex.align-items-center.justify-content-between
+                                .title
+                                    i.ti.ti-key
+                                    span Password
+                                .data-content
+                                    a(href="change-password.html")
+                                        | Change
+                                        i.ti.ti-arrow-right
+
+        include inc/footer-nav.pug
+
+        include inc/footer.pug

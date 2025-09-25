@@ -1,0 +1,263 @@
+doctype html
+html(lang="en")
+    head
+        include inc/head.pug
+
+    body
+        include inc/loader.pug
+
+        // Header Area
+        .header-area#headerArea
+            .container.h-100.d-flex.align-items-center.justify-content-between.rtl-flex-d-row-r
+                // Back Button
+                .back-button.me-2
+                    a(href="home.html")
+                        i.ti.ti-arrow-left
+
+                // Page Title
+                .page-heading
+                    h6.mb-0 Shop List
+
+                // Filter Option
+                .filter-option.ms-2(data-bs-toggle="offcanvas", data-bs-target="#suhaFilterOffcanvas", aria-controls="suhaFilterOffcanvas")
+                    i.ti.ti-adjustments-horizontal
+
+        include inc/filter.pug
+
+        .page-content-wrapper
+            .py-3
+                .container
+                    .row.g-1.align-items-center.rtl-flex-d-row-r
+                        .col-8
+                            // Product Catagories Slide 
+                            .product-catagories.owl-carousel.catagory-slides
+                                a.shadow-sm(href="#")
+                                    img(src="img/product/9.png", alt="")
+                                    | Shoes
+
+                                a.shadow-sm(href="#")
+                                    img(src="img/product/4.png", alt="")
+                                    | Dress
+
+                                a.shadow-sm(href="#")
+                                    img(src="img/product/9.png", alt="")
+                                    | Shoes
+
+                                a.shadow-sm(href="#")
+                                    img(src="img/product/4.png", alt="")
+                                    | Dress
+
+                        .col-4
+                            // Select Product Catagory
+                            .select-product-catagory
+                                select.right.small.border-0#selectProductCatagory(name="selectProductCatagory", aria-label="Default select example")
+                                    option(selected) Short by
+                                    option(value="1") Newest
+                                    option(value="2") Popular
+                                    option(value="3") Ratings
+                    .mb-3
+
+                    .row.g-2
+                        // Weekly Product Card 
+                        .col-12
+                            .card.horizontal-product-card
+                                .d-flex.align-items-center
+                                    .product-thumbnail-side
+                                        // Thumbnail 
+                                        a.product-thumbnail.d-block(href="single-product.html")
+                                            img(src="img/product/18.png", alt="")
+                                        // Wishlist  
+                                        a.wishlist-btn(href="#")
+                                            i.ti.ti-heart
+                                    .product-description
+                                        // Product Title 
+                                        a.product-title.d-block(href="single-product.html") Nescafe Coffee Jar
+                                        // Price 
+                                        p.sale-price
+                                            i.ti.ti-currency-dollar
+                                            | $64
+                                            span $89
+                                        // Rating 
+                                        .product-rating
+                                            i.ti.ti-star-filled
+                                            | 4.88 
+                                            span.ms-1 (39 review)
+
+                        // Weekly Product Card 
+                        .col-12
+                            .card.horizontal-product-card
+                                .d-flex.align-items-center
+                                    .product-thumbnail-side
+                                        // Thumbnail 
+                                        a.product-thumbnail.d-block(href="single-product.html")
+                                            img(src="img/product/7.png", alt="")
+                                        // Wishlist  
+                                        a.wishlist-btn(href="#")
+                                            i.ti.ti-heart
+                                    .product-description
+                                        // Product Title 
+                                        a.product-title.d-block(href="single-product.html") Modern Office Chair
+                                        // Price 
+                                        p.sale-price
+                                            i.ti.ti-currency-dollar
+                                            | $99
+                                            span $159
+                                        // Rating 
+                                        .product-rating
+                                            i.ti.ti-star-filled
+                                            | 4.82 
+                                            span.ms-1 (125 review)
+
+                        // Weekly Product Card 
+                        .col-12
+                            .card.horizontal-product-card
+                                .d-flex.align-items-center
+                                    .product-thumbnail-side
+                                        // Thumbnail 
+                                        a.product-thumbnail.d-block(href="single-product.html")
+                                            img(src="img/product/12.png", alt="")
+                                        // Wishlist  
+                                        a.wishlist-btn(href="#")
+                                            i.ti.ti-heart
+                                    .product-description
+                                        // Product Title 
+                                        a.product-title.d-block(href="single-product.html") Beach Sunglasses
+                                        // Price 
+                                        p.sale-price
+                                            i.ti.ti-currency-dollar
+                                            | $24
+                                            span $32
+                                        // Rating 
+                                        .product-rating
+                                            i.ti.ti-star-filled
+                                            | 4.79 
+                                            span.ms-1 (63 review)
+
+                        // Weekly Product Card 
+                        .col-12
+                            .card.horizontal-product-card
+                                .d-flex.align-items-center
+                                    .product-thumbnail-side
+                                        // Thumbnail 
+                                        a.product-thumbnail.d-block(href="single-product.html")
+                                            img(src="img/product/17.png", alt="")
+                                        // Wishlist  
+                                        a.wishlist-btn(href="#")
+                                            i.ti.ti-heart
+                                    .product-description
+                                        // Product Title 
+                                        a.product-title.d-block(href="single-product.html") Meow Mix Cat Food
+                                        // Price 
+                                        p.sale-price
+                                            i.ti.ti-currency-dollar
+                                            | $11.49
+                                            span $13
+                                        // Rating 
+                                        .product-rating
+                                            i.ti.ti-star-filled
+                                            | 4.78 
+                                            span.ms-1 (7 review)
+
+                        // Weekly Product Card 
+                        .col-12
+                            .card.horizontal-product-card
+                                .d-flex.align-items-center
+                                    .product-thumbnail-side
+                                        // Thumbnail 
+                                        a.product-thumbnail.d-block(href="single-product.html")
+                                            img(src="img/product/18.png", alt="")
+                                        // Wishlist  
+                                        a.wishlist-btn(href="#")
+                                            i.ti.ti-heart
+                                    .product-description
+                                        // Product Title 
+                                        a.product-title.d-block(href="single-product.html") Nescafe Coffee Jar
+                                        // Price 
+                                        p.sale-price
+                                            i.ti.ti-currency-dollar
+                                            | $64
+                                            span $89
+                                        // Rating 
+                                        .product-rating
+                                            i.ti.ti-star-filled
+                                            | 4.88 
+                                            span.ms-1 (39 review)
+
+                        // Weekly Product Card 
+                        .col-12
+                            .card.horizontal-product-card
+                                .d-flex.align-items-center
+                                    .product-thumbnail-side
+                                        // Thumbnail 
+                                        a.product-thumbnail.d-block(href="single-product.html")
+                                            img(src="img/product/7.png", alt="")
+                                        // Wishlist  
+                                        a.wishlist-btn(href="#")
+                                            i.ti.ti-heart
+                                    .product-description
+                                        // Product Title 
+                                        a.product-title.d-block(href="single-product.html") Modern Office Chair
+                                        // Price 
+                                        p.sale-price
+                                            i.ti.ti-currency-dollar
+                                            | $99
+                                            span $159
+                                        // Rating 
+                                        .product-rating
+                                            i.ti.ti-star-filled
+                                            | 4.82 
+                                            span.ms-1 (125 review)
+
+                        // Weekly Product Card 
+                        .col-12
+                            .card.horizontal-product-card
+                                .d-flex.align-items-center
+                                    .product-thumbnail-side
+                                        // Thumbnail 
+                                        a.product-thumbnail.d-block(href="single-product.html")
+                                            img(src="img/product/12.png", alt="")
+                                        // Wishlist  
+                                        a.wishlist-btn(href="#")
+                                            i.ti.ti-heart
+                                    .product-description
+                                        // Product Title 
+                                        a.product-title.d-block(href="single-product.html") Beach Sunglasses
+                                        // Price 
+                                        p.sale-price
+                                            i.ti.ti-currency-dollar
+                                            | $24
+                                            span $32
+                                        // Rating 
+                                        .product-rating
+                                            i.ti.ti-star-filled
+                                            | 4.79 
+                                            span.ms-1 (63 review)
+
+                        // Weekly Product Card 
+                        .col-12
+                            .card.horizontal-product-card
+                                .d-flex.align-items-center
+                                    .product-thumbnail-side
+                                        // Thumbnail 
+                                        a.product-thumbnail.d-block(href="single-product.html")
+                                            img(src="img/product/17.png", alt="")
+                                        // Wishlist  
+                                        a.wishlist-btn(href="#")
+                                            i.ti.ti-heart
+                                    .product-description
+                                        // Product Title 
+                                        a.product-title.d-block(href="single-product.html") Meow Mix Cat Food
+                                        // Price 
+                                        p.sale-price
+                                            i.ti.ti-currency-dollar
+                                            | $11.49
+                                            span $13
+                                        // Rating 
+                                        .product-rating
+                                            i.ti.ti-star-filled
+                                            | 4.78 
+                                            span.ms-1 (7 review)
+
+        include inc/footer-nav.pug
+
+        include inc/footer.pug

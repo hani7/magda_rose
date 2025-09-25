@@ -1,0 +1,105 @@
+doctype html
+html(lang="en")
+    head
+        include inc/head.pug
+
+    body
+        include inc/loader.pug
+
+        // Header Area
+        .header-area#headerArea
+            .container.h-100.d-flex.align-items-center.justify-content-between.rtl-flex-d-row-r
+                // Back Button
+                .back-button.me-2
+                    a(href="blog-grid.html")
+                        i.ti.ti-arrow-left
+
+                // Page Title
+                .page-heading
+                    h6.mb-0 Blog Details
+
+                // Navbar Toggler
+                .suha-navbar-toggler.ms-2(data-bs-toggle="offcanvas", data-bs-target="#suhaOffcanvas", aria-controls="suhaOffcanvas")
+                    div
+                        span
+                        span
+                        span
+
+        include inc/sidenav.pug
+
+        .page-content-wrapper
+            .blog-details-post-thumbnail(style="background-image: url('img/bg-img/6.jpg')")
+                .container
+                    .post-bookmark-wrap
+                        // Post Bookmark
+                        a(href="#").post-bookmark
+                            i.ti.ti-bookmark
+
+            .product-description.pb-3
+
+                // Product Title & Meta Data
+                .product-title-meta-data.bg-white.mb-3.py-3.dir-rtl
+                    .container
+                        h5.post-title Bridal shopping is the latest trends of this month.
+                        a(href="#").post-catagory.mb-3.d-block Shopping
+                        .post-meta-data.d-flex.align-items-center.justify-content-between
+                            a(href="#").d-flex.align-items-center
+                                img(src="img/bg-img/9.jpg", alt="")
+                                | Sarah
+                                span Follow
+
+                            span.d-flex.align-items-center
+                                svg(xmlns="http://www.w3.org/2000/svg", width="16", height="16", fill="currentColor", class="bi bi-clock me-1", viewBox="0 0 16 16")
+                                    path(d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z")
+                                    path(d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z")
+                                | 4 min read
+
+                .post-content.bg-white.py-3.mb-3.dir-rtl
+                    .container
+                        p Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta delectus distinctio officiis! Quisquam blanditiis voluptatibus, quod doloribus modi, impedit in dolores voluptates, aliquam facilis architecto eligendi laudantium eos!
+                        h6 The top shopping deals is the year 2025.
+                        p Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum necessitatibus dicta adipisci tempora beatae impedit similique qui sit, ea possimus eos odit, voluptatum totam voluptates iure quo?
+                        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis cupiditate quis molestias molestiae minus vel, ipsam corporis aut error libero tenetur facere assumenda soluta esse? Perferendis, eum!
+                        a(href="#").mb-3.d-block.h6 How to easily buy a product?
+                        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto quasi quas eligendi adipisci quaerat totam. Veritatis ratione a numquam molestias, sit at molestiae excepturi totam dolore, hic fugiat. Incidunt modi odit iure ipsam amet illo placeat laboriosam.
+                        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet porro, consectetur cum ea aut dolores officia magni laudantium, sed hic ad nulla laborum quam minima voluptatum, labore ipsam.
+
+                // All Comments
+                .rating-and-review-wrapper.bg-white.py-3.mb-3.dir-rtl
+                    .container
+                        h6 Comments (3)
+                        .rating-review-content
+                            ul.ps-0
+                                li.single-user-review.d-flex
+                                    .user-thumbnail.mt-0
+                                        img(src="img/bg-img/7.jpg", alt="")
+                                    .rating-comment
+                                        p.comment.mb-0 Very good product. It's just amazing!
+                                        span.name-date Designing World - 12 Dec 2025
+
+                                li.single-user-review.d-flex
+                                    .user-thumbnail.mt-0
+                                        img(src="img/bg-img/8.jpg", alt="")
+                                    .rating-comment
+                                        p.comment.mb-0 Very excellent product. Love it.
+                                        span.name-date Designing World - 8 Dec 2025
+
+                                li.single-user-review.d-flex
+                                    .user-thumbnail.mt-0
+                                        img(src="img/bg-img/9.jpg", alt="")
+                                    .rating-comment
+                                        p.comment.mb-0 What a nice product it is. I am looking it's.
+                                        span.name-date Designing World - 28 Nov 2025
+
+                // Comment Form
+                .ratings-submit-form.bg-white.py-3.dir-rtl
+                    .container
+                        h6 Submit A Comment
+                        form(action="#" method="")
+                            .mb-3
+                                textarea.form-control#comments(name="comment", cols="30", rows="10", placeholder="Write your comment...")
+                            button.btn.btn-primary(type="submit") Post Comment
+
+        include inc/footer-nav.pug
+
+        include inc/footer.pug

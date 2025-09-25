@@ -1,0 +1,77 @@
+doctype html
+html(lang="en")
+    head
+        include inc/head.pug
+
+    body
+        include inc/loader.pug
+
+        // Header Area 
+        .header-area#headerArea
+            .container.h-100.d-flex.align-items-center.justify-content-between.rtl-flex-d-row-r
+                // Back Button 
+                .back-button.me-2
+                    a(href="home.html")
+                        i.ti.ti-arrow-left
+
+                // Page Title 
+                .page-heading
+                    h6.mb-0 About Us
+
+                // Navbar Toggler 
+                .suha-navbar-toggler.ms-2(data-bs-toggle="offcanvas", data-bs-target="#suhaOffcanvas", aria-controls="suhaOffcanvas")
+                    div
+                        span
+                        span
+                        span
+
+        include inc/sidenav.pug
+
+        .page-content-wrapper.py-3
+            .container
+                .card
+                    .card-body
+                        .about-content-wrap.dir-rtl
+                            img.mb-3(src="img/bg-img/12.png", alt="")
+                            h5 We are here for your all needs. Let's together safer the world. Stay at home, stay safe.
+
+                            p A versatile e-commerce shop template. It is very nicely designed with modern features &amp; coded with the latest technology.
+                            p It nicely views on all devices with smartphones, tablets, laptops &amp; desktops.
+
+                            ul.mb-3.ps-3
+                                li
+                                    i.ti.ti-check.me-1
+                                    | Versatile e-commerce mobile template.
+                                li
+                                    i.ti.ti-check.me-1
+                                    | Nicely designed with modern features.
+                                li
+                                    i.ti.ti-check.me-1
+                                    | Coded with the latest technology.
+
+                            p It nicely views on all devices with smartphones, tablets, laptops &amp; desktops.
+
+                            .row.g-2
+                                .col-6
+                                    img.mb-3.rounded(src="img/bg-img/12.jpg", alt="")
+                                .col-6
+                                    img.mb-3.rounded(src="img/bg-img/16.jpg", alt="")
+
+                            p A versatile e-commerce shop template. It is very nicely designed with modern features &amp; coded with the latest technology.
+                            p It nicely views on all devices with smartphones, tablets, laptops &amp; desktops.
+
+                            h6 Authors Help
+                            p Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae suscipit blanditiis facilis, est modi, maxime dolorem voluptatibus ea deserunt voluptate minima eaque quidem?
+
+                            h6 Buyers Help
+                            p Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus sint reiciendis minima iusto ex beatae. Odio ducimus eveniet excepturi quaerat optio totam repellat eligendi! Eaque veritatis omnis doloribus vitae dolore similique facere eos molestiae quibusdam perspiciatis.
+
+                            .contact-btn-wrap.text-center
+                                p.mb-2 For more information, submit a request.
+                                a.btn.btn-primary.btn-lg.w-100(href="contact.html")
+                                    i.ti.ti-mail.me-2
+                                    | Submit A Query
+
+        include inc/footer-nav.pug
+
+        include inc/footer.pug
