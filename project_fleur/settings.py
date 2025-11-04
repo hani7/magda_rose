@@ -23,10 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-645b4hwz67c1x*!w5(g@f-49sn39=g*!c=uzl1=@0&nr23t!54'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
+DEBUG = False
+ALLOWED_HOSTS = [
+    "magda-rose-1.onrender.com",  # your Render service URL
+    "localhost", "127.0.0.1",
+]STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Application definition
 
@@ -48,8 +50,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
-
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"
+    }
+}
 ROOT_URLCONF = 'project_fleur.urls'
 
 TEMPLATES = [
@@ -70,8 +78,9 @@ TEMPLATES = [
 
 
 WSGI_APPLICATION = 'project_fleur.wsgi.application'
-
-
+CSRF_TRUSTED_ORIGINS = [
+    "https://magda-rose-1.onrender.com",
+]
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
@@ -128,3 +137,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+import os, dj_database_url
