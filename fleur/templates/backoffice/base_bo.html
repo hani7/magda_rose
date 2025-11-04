@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>{% block title %}Back-Office{% endblock %}</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+</head>
+<body class="container">
+<header>
+  <nav>
+    <ul>
+      <li><strong>Project Fleur — Back-Office</strong></li>
+    </ul>
+    <ul>
+      <li><a href="{% url 'fleur:bo_dashboard' %}">Dashboard</a></li>
+      <li><a href="{% url 'fleur:bo_product_list' %}">Produits</a></li>
+      <li><a href="{% url 'fleur:bo_category_list' %}">Catégories</a></li>
+        <li><a href="{% url 'fleur:bo_order_list' %}">Commandes</a></li>
+      <li><a href="{% url 'fleur:bo_home_video' %}">Vidéo accueil</a></li>
+          <li><a href="{% url 'fleur:bo_slots_list' %}" class="pill">Slots</a></li>
+        <li><a href="{% url 'fleur:bo_slot_create' %}">Nouveau slot</a></li>
+      <li><a href="{% url 'fleur:bo_logout' %}">Déconnexion</a></li>
+    </ul>
+  </nav>
+</header>
+
+{% if messages %}
+  <article>
+    {% for m in messages %}<p>{{ m }}</p>{% endfor %}
+  </article>
+{% endif %}
+
+<main>{% block content %}{% endblock %}</main>
+</body>
+</html>

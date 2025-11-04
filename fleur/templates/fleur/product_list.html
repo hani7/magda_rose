@@ -1,0 +1,31 @@
+{% extends "fleur/base.html" %}
+{% block title %}Boutique{% endblock %}
+
+{% block content %}
+<h1>Boutique</h1>
+
+<form method="get" style="margin-bottom:1rem">
+  <input type="search" name="q" placeholder="Rechercher un bouquet..." value="{{ q }}">
+  <button type="submit">Rechercher</button>
+</form>
+
+<nav style="margin-bottom:1rem">
+  <a href="{% url 'fleur:client_home' %}" {% if not current_category %}aria-current="page"{% endif %}>Toutes</a>
+  {% for c in categories %}
+    <a href="{% url 'fleur:product_list_by_category' c.slug %}" {% if current_category == c %}aria-current="page"{% endif %}>{{ c.name }}</a>
+  {% endfor %}
+</nav>
+
+<div class="grid">
+  {% for p in products %}
+    <article>
+      {% if p.image %}<img src="{{ p.image.url }}" alt="{{ p.name }}" style="width:100%;height:auto">{% endif %}
+      <h3>{{ p.name }}</h3>
+      <p><strong>{{ p.price }} DA</strong></p>
+      <a role="button" href="{% url 'fleur:buy_now' p.slug %}">Acheter maintenant</a>
+    </article>
+  {% empty %}
+    <p>Aucun produit trouvé.</p>
+  {% endfor %}
+</div>
+{% endblock %}

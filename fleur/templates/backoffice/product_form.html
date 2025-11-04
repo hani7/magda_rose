@@ -1,0 +1,11 @@
+{% extends "backoffice/base_bo.html" %}
+{% block title %}Nouveau produit — Back-Office{% endblock %}
+{% block content %}
+<h2>Nouveau produit</h2>
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Enregistrer</button>
+  <a href="{% url 'fleur:bo_product_list' %}" role="button" class="secondary">Annuler</a>
+</form>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "backoffice/base_bo.html" %}
+{% block title %}Back-Office • Slots{% endblock %}
+{% block content %}
+<h1 style="margin:0 0 .75rem;">Gestion des Slots</h1>
+
+<div style="display:flex; gap:.5rem; align-items:center; margin:.5rem 0 1rem;">
+  <form method="get" action="" style="display:flex; gap:.5rem;">
+    <input type="text" name="q" value="{{ q }}" placeholder="Rechercher slot ou produit"
+           style="padding:.5rem .75rem; min-width:240px;">
+    <button type="submit">Rechercher</button>
+  </form>
+  <a href="{% url 'fleur:bo_slot_create' %}" style="margin-left:auto;">+ Nouveau slot</a>
+  <a href="{% url 'fleur:bo_slots_seed12' %}" onclick="return confirm('Créer les 12 slots 1..12 ?');">Créer 12 slots</a>
+</div>
+
+<div style="overflow:auto;">
+  <table style="width:100%; border-collapse:collapse;">
+    <thead>
+      <tr style="text-align:left; border-bottom:1px solid #eee;">
+        <th style="padding:.5rem;">Code</th>
+        <th style="padding:.5rem;">Produit</th>
+        <th style="padding:.5rem;">Quantité</th>
+        <th style="padding:.5rem;">Actif</th>
+        <th style="padding:.5rem;">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for s in slots %}
+      <tr style="border-bottom:1px solid #f1f1f1;">
+        <td style="padding:.5rem;"><strong>{{ s.code }}</strong></td>
+        <td style="padding:.5rem;">
+          {% if s.product %}
+            {{ s.product.name }}
+          {% else %}
+            <em>— non affecté —</em>
+          {% endif %}
+        </td>
+        <td style="padding:.5rem;">{{ s.quantity }}</td>
+        <td style="padding:.5rem;">{{ s.is_enabled|yesno:"Oui,Non" }}</td>
+        <td style="padding:.5rem;">
+          <a href="{% url 'fleur:bo_slot_edit' s.pk %}">Éditer</a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="5" style="padding:1rem;">Aucun slot pour le moment.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<p style="margin-top:1rem;">
+  <a href="{% url 'fleur:mes_bouquets' %}" target="_blank">↗️ Voir la boutique (côté client)</a>
+</p>
+{% endblock %}

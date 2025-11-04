@@ -1,0 +1,24 @@
+{% extends "fleur/base.html" %}
+{% block content %}
+<h1>Paiement échoué ❌</h1>
+<p>Produit : <strong>{{ product.name }}</strong></p>
+<p>Inséré : <strong>{{ payment.amount_inserted }} DA</strong></p>
+
+<p style="margin-top:1rem;">
+  <button id="backHome" role="button">Retour à l’accueil</button>
+</p>
+
+<script>
+  document.getElementById('backHome').addEventListener('click', function () {
+    const ok = confirm("Voulez-vous retourner à l'accueil ?");
+    if (ok) {
+      // Change the URL below to the home page you use:
+      window.location.href = "{% url 'fleur:mes_bouquets' %}";
+      // If your home is the video page at /home/ instead, use:
+      // window.location.href = "{% url 'fleur:client_landing' %}";
+    } else {
+      // Do nothing: stay on this page
+    }
+  });
+</script>
+{% endblock %}

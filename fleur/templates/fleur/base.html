@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>{% block title %}Fleur{% endblock %}</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+</head>
+<body class="container">
+<header>
+  <nav>
+    <ul><li><a href="{% url 'fleur:product_list' %}">Boutique</a></li></ul>
+  </nav>
+</header>
+
+{% if messages %}
+  <ul>
+    {% for m in messages %}<li>{{ m }}</li>{% endfor %}
+  </ul>
+{% endif %}
+
+<main>{% block content %}{% endblock %}</main>
+</body>
+</html>

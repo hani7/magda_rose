@@ -1,0 +1,37 @@
+{% extends "fleur/base.html" %}
+{% block title %}{{ content.title|default:"Bienvenue" }}{% endblock %}
+
+{% block content %}
+  <h1 style="margin-bottom: .25rem;">{{ content.title|default:"Bienvenue" }}</h1>
+  {% if content.subtitle %}
+    <p style="margin-top:0;color:#666">{{ content.subtitle }}</p>
+  {% endif %}
+
+  {% if embed_url %}
+    <!-- YouTube embed -->
+    <div style="aspect-ratio:16/9;max-width:960px;width:100%;margin:1rem 0;">
+      <iframe
+        src="{{ embed_url }}"
+        title="Présentation"
+        style="width:100%;height:100%;border:0;"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+    </div>
+  {% elif best_src %}
+    <!-- Direct video file / direct URL -->
+    <video controls style="max-width:960px;width:100%;height:auto;margin:1rem 0;">
+      <source src="{{ best_src }}">
+      Votre navigateur ne supporte pas la balise vidéo.
+    </video>
+  {% else %}
+    <article style="max-width:960px">
+      <p>Aucune vidéo définie pour l’instant. Ajoutez une vidéo dans le Back-Office
+        (<em>Vidéo accueil</em>).</p>
+    </article>
+  {% endif %}
+
+  <p style="margin-top:1rem;">
+<a role="button" href="{% url 'fleur:mes_bouquets' %}">Voir la boutique</a>
+  </p>
+{% endblock %}

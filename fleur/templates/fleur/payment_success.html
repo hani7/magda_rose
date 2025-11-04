@@ -1,0 +1,10 @@
+{% extends "fleur/base.html" %}
+{% block content %}
+<h1>Paiement réussi ✅</h1>
+<p>Produit : <strong>{{ product.name }}</strong></p>
+<p>Payé : <strong>{{ payment.amount_inserted }} DA</strong></p>
+{% if change and change > 0 %}
+  <p>Rendu monnaie : <strong>{{ change }} DA</strong></p>
+{% endif %}
+<p><a href="{% url 'fleur:home' %}">Retour à la boutique</a></p>
+{% endblock %}

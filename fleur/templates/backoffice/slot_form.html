@@ -1,0 +1,39 @@
+{% extends "backoffice/base_bo.html" %}
+{% block title %}
+  {% if mode == "create" %}Nouveau slot{% else %}Éditer slot{% endif %}
+{% endblock %}
+
+{% block content %}
+<h1 style="margin:0 0 .75rem;">
+  {% if mode == "create" %}Nouveau slot{% else %}Éditer slot {{ slot.code }}{% endif %}
+</h1>
+
+<form method="post" novalidate style="max-width:520px;">
+  {% csrf_token %}
+  <div style="display:grid; gap:.75rem;">
+    <div>
+      <label>Code</label>
+      {{ form.code }}
+    </div>
+    <div>
+      <label>Produit (optionnel)</label>
+      {{ form.product }}
+      <small style="color:#666;">Assigne le produit à ce slot.</small>
+    </div>
+    <div>
+      <label>Quantité</label>
+      {{ form.quantity }}
+    </div>
+    <div>
+      <label style="display:flex; gap:.5rem; align-items:center;">
+        {{ form.is_enabled }} Actif
+      </label>
+    </div>
+  </div>
+
+  <div style="margin-top:1rem; display:flex; gap:.5rem;">
+    <button type="submit">Enregistrer</button>
+    <a href="{% url 'fleur:bo_slots_list' %}">Annuler</a>
+  </div>
+</form>
+{% endblock %}

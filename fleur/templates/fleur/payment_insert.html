@@ -1,0 +1,173 @@
+{% extends "fleur/base.html" %}
+{% block title %}Paiement — {{ product.name }}{% endblock %}
+
+{% block content %}
+<h1 style="margin:0 0 .5rem;">Paiement — {{ product.name }}</h1>
+<p style="margin:0 0 1rem;">Commande n° <strong>{{ order.id }}</strong></p>
+
+<ul style="list-style:none; padding:0; margin:0 0 1rem;">
+  <li>Montant à payer : <strong id="due">{{ payment.amount_due }} DA</strong></li>
+  <li>Déjà inséré : <strong id="inserted">{{ payment.amount_inserted|default:0 }} DA</strong></li>
+  <li>Reste : <strong id="remaining">{{ remaining }} DA</strong></li>
+</ul>
+
+<!-- Boutons billets (hardware via bridge ID-003) -->
+<div style="display:flex; gap:.5rem; flex-wrap:wrap; margin:.75rem 0">
+  <button type="button" class="bill-btn" data-bill="500">+ 500 DA</button>
+  <button type="button" class="bill-btn" data-bill="1000">+ 1000 DA</button>
+  <button type="button" class="bill-btn" data-bill="2000">+ 2000 DA</button>
+</div>
+
+<!-- Bouton OpenCV (optionnel ; auto-activé si service détecté) -->
+<div style="margin:.5rem 0;">
+  <button type="button" id="scan-cv" disabled title="Service caméra indisponible">Scanner billet (caméra)</button>
+  <small id="cv-state" style="display:block; color:#666; margin-top:.25rem;">Caméra: non détectée</small>
+</div>
+
+<!-- Annuler -->
+<form method="post" id="cancel-form" style="margin-top:.75rem;">
+  {% csrf_token %}
+  <button type="button" id="cancel-btn" class="secondary">Annuler</button>
+</form>
+
+<p id="flash" style="margin-top:1rem; min-height:1.25rem; color:#0a7;"></p>
+<p style="margin-top:.5rem; color:#666;">
+  Le montant se met à jour automatiquement quand le monnayeur ou la caméra valident le billet.
+</p>
+
+<script>
+(function () {
+  // ---- Config ----
+  const PAYMENT_ID = {{ payment.pk }};
+  const POLL_URL    = "{% url 'fleur:payment_insert' payment.pk %}?json=1";
+  const SUCCESS_URL = "{% url 'fleur:payment_success' payment.pk %}";
+  const HOME_URL    = "{% url 'fleur:mes_bouquets' %}";  // change to client_landing if you prefer
+  // Local services
+  const BRIDGE_BASE = "http://127.0.0.1:9999";  // device_bridge_server.py
+  const CV_BASE     = "http://127.0.0.1:9998";  // cv_bill_server.py
+
+  // ---- UI refs ----
+  const insertedEl = document.getElementById('inserted');
+  const remainingEl = document.getElementById('remaining');
+  const scanBtn = document.getElementById('scan-cv');
+  const cvState = document.getElementById('cv-state');
+  const flashEl = document.getElementById('flash');
+
+  function flash(msg, ok=true) {
+    flashEl.textContent = msg || "";
+    flashEl.style.color = ok ? "#0a7" : "#b00";
+    if (msg) setTimeout(() => { flashEl.textContent = ""; }, 2500);
+  }
+
+  // ---- Polling Django for live totals ----
+  async function poll() {
+    try {
+      const r = await fetch(POLL_URL, { cache: 'no-store' });
+      if (!r.ok) throw new Error('poll failed');
+      const j = await r.json();
+      insertedEl.textContent = j.amount_inserted + " DA";
+      remainingEl.textContent = j.remaining + " DA";
+      if (j.completed) {
+        window.location.href = SUCCESS_URL;
+        return;
+      }
+    } catch (e) {
+      // silent retry
+    }
+    setTimeout(poll, 900);
+  }
+
+  // ---- Bridge session (associate current payment) ----
+  async function setBridgeSession() {
+    try {
+      await fetch(BRIDGE_BASE + "/set-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ payment_id: PAYMENT_ID })
+      });
+    } catch (e) {
+      console.warn("Bridge indisponible (127.0.0.1:9999)");
+    }
+  }
+
+  // ---- Hardware bill buttons -> bridge /stack ----
+  async function sendBill(bill) {
+    try {
+      const res = await fetch(BRIDGE_BASE + "/stack", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ bill: bill, payment_id: PAYMENT_ID })
+      });
+      if (!res.ok) { flash("Billet refusé ou bridge indisponible.", false); return; }
+      const j = await res.json();
+      if (j.ok) {
+        flash("+" + bill + " DA ajouté");
+        // Totals update automatically on next poll (bridge -> Django event)
+      } else {
+        flash("Billet non reconnu/refusé.", false);
+      }
+    } catch (e) {
+      flash("Bridge indisponible (127.0.0.1:9999).", false);
+    }
+  }
+
+  document.querySelectorAll('.bill-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const bill = parseInt(btn.dataset.bill, 10);
+      sendBill(bill);
+    });
+  });
+
+  // ---- Cancel with confirm (marks FAILED server-side) ----
+  document.getElementById('cancel-btn').addEventListener('click', async function () {
+    const sure = confirm("Voulez-vous annuler le paiement et retourner à l'accueil ?");
+    if (!sure) return;
+    const fd = new FormData(document.getElementById('cancel-form'));
+    fd.append('cancel', '1');
+    try { await fetch(window.location.href, { method: 'POST', body: fd }); } catch (e) {}
+    window.location.href = HOME_URL;
+  });
+
+  // ---- Optional OpenCV wiring (auto-enable if service up) ----
+  async function checkCV() {
+    try {
+      const r = await fetch(CV_BASE + "/healthz", { cache: 'no-store' });
+      if (r.ok) {
+        scanBtn.disabled = false;
+        scanBtn.title = "";
+        cvState.textContent = "Caméra: prête";
+        return true;
+      }
+    } catch (e) {}
+    scanBtn.disabled = true;
+    scanBtn.title = "Service caméra indisponible";
+    cvState.textContent = "Caméra: non détectée";
+    return false;
+  }
+
+  scanBtn.addEventListener('click', async () => {
+    try {
+      const r = await fetch(CV_BASE + "/cv/stack", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ payment_id: PAYMENT_ID })
+      });
+      const j = await r.json();
+      if (j.ok) {
+        flash("+" + j.amount + " DA ajouté (caméra)");
+        // Polling will reflect the new total
+      } else {
+        flash("Billet non reconnu par la caméra (score " + (j.confidence ?? 0).toFixed(2) + ").", false);
+      }
+    } catch (e) {
+      flash("Service caméra indisponible.", false);
+    }
+  });
+
+  // ---- Boot ----
+  setBridgeSession();
+  poll();
+  checkCV();
+})();
+</script>
+{% endblock %}

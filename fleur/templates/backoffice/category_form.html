@@ -1,0 +1,11 @@
+{% extends "backoffice/base_bo.html" %}
+{% block title %}Nouvelle catégorie — Back-Office{% endblock %}
+{% block content %}
+<h2>Nouvelle catégorie</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Enregistrer</button>
+  <a href="{% url 'fleur:bo_category_list' %}" role="button" class="secondary">Annuler</a>
+</form>
+{% endblock %}

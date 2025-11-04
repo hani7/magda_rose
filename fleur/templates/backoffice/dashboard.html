@@ -1,0 +1,15 @@
+{% extends "backoffice/base_bo.html" %}
+{% block title %}Dashboard — Back-Office{% endblock %}
+{% block content %}
+<h2>Tableau de bord</h2>
+<div class="grid">
+  <article><h3>Produits</h3><p>{{ stats.products }}</p></article>
+  <article><h3>Actifs</h3><p>{{ stats.active_products }}</p></article>
+  <article><h3>Catégories</h3><p>{{ stats.categories }}</p></article>
+  <article><h3>Commandes</h3><p>{{ stats.orders }}</p></article>
+</div>
+<p>
+  <a href="{% url 'fleur:bo_product_create' %}" role="button">Créer un produit</a>
+  <a href="{% url 'fleur:bo_category_create' %}" role="button" class="secondary">Créer une catégorie</a>
+</p>
+{% endblock %}

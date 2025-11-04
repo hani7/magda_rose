@@ -1,0 +1,13 @@
+{% extends "fleur/backoffice/base_bo.html" %}
+{% block title %}Vidéo d’accueil — Back-Office{% endblock %}
+{% block content %}
+<h2>Vidéo d’accueil</h2>
+<p>Mettez à jour le titre/sous-titre et uploadez une vidéo, ou fournissez une URL (YouTube/Vimeo/MP4). Si un fichier est uploadé, il sera utilisé en priorité.</p>
+
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Enregistrer</button>
+  <a href="{% url 'fleur:bo_dashboard' %}" role="button" class="secondary">Retour</a>
+</form>
+{% endblock %}

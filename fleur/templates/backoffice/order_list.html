@@ -1,0 +1,53 @@
+{% extends "backoffice/base_bo.html" %}
+{% block title %}Commandes{% endblock %}
+
+{% block content %}
+<h1 style="margin:0 0 .75rem;">Commandes</h1>
+
+<form method="get" style="display:flex; gap:.5rem; align-items:center; margin:0 0 1rem;">
+  <input type="text" name="q" value="{{ q }}" placeholder="Rechercher (id, produit, slot)"
+         style="padding:.5rem .75rem; min-width:260px;">
+  <select name="status" style="padding:.45rem .5rem;">
+    <option value="">— Tous les statuts —</option>
+    {% for s in statuses %}
+      <option value="{{ s }}" {% if s == status %}selected{% endif %}>{{ s }}</option>
+    {% endfor %}
+  </select>
+  <button type="submit">Filtrer</button>
+</form>
+
+<div style="overflow:auto;">
+  <table style="width:100%; border-collapse:collapse;">
+    <thead>
+      <tr style="text-align:left; border-bottom:1px solid #eee;">
+        <th style="padding:.5rem;">ID</th>
+        <th style="padding:.5rem;">Créée</th>
+        <th style="padding:.5rem;">Produit</th>
+        <th style="padding:.5rem;">Slot</th>
+        <th style="padding:.5rem;">Prix unitaire</th>
+        <th style="padding:.5rem;">Statut</th>
+        <th style="padding:.5rem;">Vendu</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for o in orders %}
+      <tr style="border-bottom:1px solid #f1f1f1;">
+        <td style="padding:.5rem;"><strong>{{ o.id }}</strong></td>
+        <td style="padding:.5rem;">{{ o.created_at|date:"Y-m-d H:i" }}</td>
+        <td style="padding:.5rem;">{{ o.product.name }}</td>
+        <td style="padding:.5rem;">{% if o.slot %}{{ o.slot.code }}{% else %}—{% endif %}</td>
+        <td style="padding:.5rem;">{{ o.unit_price }} DA</td>
+        <td style="padding:.5rem;">
+          <span style="padding:.15rem .5rem; border-radius:999px; border:1px solid #ddd;">
+            {{ o.status }}
+          </span>
+        </td>
+        <td style="padding:.5rem;">{{ o.vended|yesno:"Oui,Non" }}</td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="7" style="padding:1rem;">Aucune commande.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

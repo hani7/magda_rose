@@ -1,0 +1,21 @@
+{% extends "backoffice/base_bo.html" %}
+{% block title %}Produits — Back-Office{% endblock %}
+{% block content %}
+<h2>Produits</h2>
+<p><a href="{% url 'fleur:bo_product_create' %}" role="button">Nouveau produit</a></p>
+<table>
+  <thead><tr><th>Nom</th><th>Catégorie</th><th>Prix</th><th>Actif</th></tr></thead>
+  <tbody>
+    {% for p in products %}
+    <tr>
+      <td>{{ p.name }}</td>
+      <td>{{ p.category.name }}</td>
+      <td>{{ p.price }} DA</td>
+      <td>{% if p.is_active %}Oui{% else %}Non{% endif %}</td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="4">Aucun produit.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
