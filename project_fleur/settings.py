@@ -26,11 +26,10 @@ SECRET_KEY = 'django-insecure-645b4hwz67c1x*!w5(g@f-49sn39=g*!c=uzl1=@0&nr23t!54
 DEBUG = False
 ALLOWED_HOSTS = [
     "magda-rose-1.onrender.com",  # your Render service URL
-    "localhost", "127.0.0.1", ".onrender.com"
+    "localhost", "127.0.0.1",
 ]
 STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
-SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 # Application definition
 
@@ -82,6 +81,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'project_fleur.wsgi.application'
 CSRF_TRUSTED_ORIGINS = [
     "https://magda-rose-1.onrender.com",
+    "http://localhost","http://127.0.0.1"
 ]
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
